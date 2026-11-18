@@ -37,6 +37,7 @@ Desktop version
 
 Mobile version
 
+[mobile-demo.webm](https://github.com/user-attachments/assets/5919bc9d-1ae9-4484-9d97-d8d907e3e02c)
 
 
 ### Links
