@@ -6,7 +6,12 @@
   --grayish-blue: hsl(212, 23%, 69%);
   --light-grayish-blue: hsl(210, 46%, 95%);
   --light-grayish-blue-hover: hsl(210, 46%, 80%);
-  --custom-transition: all 0.5s ease;
+  --custom-transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  /* Explicitly specify transition properties to avoid unexpected animations during future styling changes. */
 }
 
 /* End Variables */
