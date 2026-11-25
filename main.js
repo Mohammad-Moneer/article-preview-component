@@ -1,6 +1,7 @@
 const shareBtn = document.getElementById("shareBtn");
 const menu = document.getElementById("shareMenu");
 const items = menu.querySelectorAll('[role="menuitem"]');
+let focusTimeout = null;
 
 shareBtn.addEventListener("click", () => {
   const expanded = shareBtn.getAttribute("aria-expanded") === "true";
@@ -43,7 +44,10 @@ function openMenu() {
   shareBtn.classList.add("menu-visible");
   menu.classList.add("visible");
   menu.setAttribute("aria-hidden", "false");
-  setTimeout(() => items[0].focus(), 100);
+  focusTimeout = setTimeout(() => {
+    items[0].focus();
+    focusTimeout = null;
+  }, 100);
   // Wait briefly to let the browser apply visibility and layout changes before focusing;
   // without this delay, focus may fail if the menu is still hidden or being repainted.
 
@@ -52,6 +56,12 @@ function openMenu() {
 }
 
 function closeMenu() {
+  // Cancel the pending focus timeout if it hasn't executed yet
+  if (focusTimeout !== null) {
+    clearTimeout(focusTimeout);
+    focusTimeout = null;
+  }
+
   shareBtn.setAttribute("aria-expanded", "false");
   shareBtn.classList.remove("menu-visible");
   menu.classList.remove("visible");
